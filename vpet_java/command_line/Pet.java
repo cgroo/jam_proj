@@ -3,16 +3,14 @@ package command_line;
 public class Pet {
 	
 	String petName;
-	int petAge = 0;
+	int petAge = 1;
 	int cleanLevel = 50;
 	int hungerLevel = 50;
 	int thirstLevel = 50;
 	int happinessLevel = 50;
 	
-	public Pet(String name, String type) {
-		if (type == "dog") {
-			
-		}
+	public Pet(String name) {
+		petName = name;
 	}
 	
 	public String getName() {
@@ -45,6 +43,22 @@ public class Pet {
 	
 	public void incrementAge() {
 		petAge += 1;
+	}
+	
+	public void showHappiness() {
+		System.out.println("Generic Method");
+	}
+		
+	public void showCleanliness() {
+		System.out.println("Generic Method");
+	}
+	
+	public void showFullness() {
+		System.out.println("Generic Method");
+	}
+	
+	public void showQuench() {
+		System.out.println("Generic Method");
 	}
 	
 	public void addClean(int amount) {

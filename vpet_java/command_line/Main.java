@@ -9,17 +9,37 @@ public class Main {
 		Scanner input = new Scanner(System.in);
 		System.out.println("What is your name?");
 		String name = input.nextLine();
-		System.out.println("What pet do you want? (Type Dog, Cat or Rat)");
+		System.out.println("What pet do you want? (Type Dog)");
 		String petType = input.nextLine();
-		user = new User(name);
+		System.out.println("What is the name of your new pet?");
+		String petName = input.nextLine();
 		input.close();
-		
+		user = new User(name);
+		if (petType.toLowerCase().equals("dog")) {
+			pet = new Dog(petName);
+		}
+
 	}
 	
+	public void petTesting() {
+		if (pet instanceof Dog) {
+			Dog dog = (Dog)pet;
+			dog.showHappiness();
+			dog.trickPaw();
+			dog.showQuench();
+			dog.addHappy(40);
+			dog.showHappiness();
+			dog.trickPaw();
+		}
+		else {
+			System.out.println("Unsupported Pet Type");
+		}
+	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Main newProgram = new Main();
+		newProgram.startUp();
+		newProgram.petTesting();
 	}
 
 }

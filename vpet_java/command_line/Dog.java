@@ -2,27 +2,29 @@ package command_line;
 
 public class Dog extends Pet{
 	
-	
-	public Dog() {
-		
+	public Dog(String petName) {
+		super(petName);
 	}
+	
+	@Override
 	public void showHappiness() {
-		if (this.happinessLevel >= 90) {
+		if (getHappinessLevel() >= 90) {
 			System.out.println("Woof! :) i'm happy");
 		}
-		else if (this.happinessLevel >= 50) {
+		else if (getHappinessLevel() >= 50) {
 			System.out.println("Woof :l i'm alright");
 		}
 		else {
 			System.out.println("woof :( give me attention");
 		}
 	}
-		
+	
+	@Override		
 	public void showCleanliness() {
-		if (this.cleanLevel >= 90) {
+		if (getCleanLevel() >= 90) {
 			System.out.println("Woof! :) i smell great");
 		}
-		else if (this.cleanLevel >= 50) {
+		else if (getCleanLevel() >= 50) {
 			System.out.println("Woof :l i'm a lil stinky");
 		}
 		else {
@@ -30,11 +32,12 @@ public class Dog extends Pet{
 		}
 	}
 	
+	@Override	
 	public void showFullness() {
-		if (this.hungerLevel >= 90) {
+		if (getHungerLevel() >= 90) {
 			System.out.println("Woof! :) i'm so full");
 		}
-		else if (this.hungerLevel >= 50) {
+		else if (getHungerLevel() >= 50) {
 			System.out.println("Woof :l stomach's grumbling a bit");
 		}
 		else {
@@ -42,11 +45,12 @@ public class Dog extends Pet{
 		}
 	}
 	
+	@Override	
 	public void showQuench() {
-		if (this.thirstLevel >= 90) {
+		if (getThirstLevel() >= 90) {
 			System.out.println("Woof! :) i'm not thirsty");
 		}
-		else if (this.hungerLevel >= 50) {
+		else if (getThirstLevel() >= 50) {
 			System.out.println("Woof :l i could go for some water");
 		}
 		else {
@@ -55,20 +59,20 @@ public class Dog extends Pet{
 	}
 	
 	public void trickSpin() {
-		if (this.getHappinessLevel() > 50) {
-			System.out.println(this.getName()+" spins around in happiness");
+		if (getHappinessLevel() > 50) {
+			System.out.println(getName()+" spins around in happiness");
 		}
 	}
 	
 	public void trickPaw() {
-		if (this.getHappinessLevel() > 50) {
-			System.out.println(this.getName()+" extends their paw in happiness");
+		if (getHappinessLevel() > 50) {
+			System.out.println(getName()+" extends their paw in happiness");
 		}
 	}
 	
 	public void trickSpeak() {
-		if (this.getHappinessLevel() > 50) {
-			System.out.println(this.getName()+" barks in happiness");
+		if (getHappinessLevel() > 50) {
+			System.out.println(getName()+" barks in happiness");
 		}
 	}
 }
