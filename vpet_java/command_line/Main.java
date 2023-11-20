@@ -24,12 +24,13 @@ public class Main {
 	public void petTesting() {
 		if (pet instanceof Dog) {
 			Dog dog = (Dog)pet;
-			dog.showHappiness();
-			dog.trickPaw();
-			dog.showQuench();
-			dog.addHappy(40);
-			dog.showHappiness();
-			dog.trickPaw();
+			dog.showCleanliness(); //should be a lil stinky becuz dog is = 50 
+			dog.addClean(40);
+			dog.showCleanliness(); //should be smelling great now
+			dog.removeClean(80);
+			dog.showCleanliness(); //should be smelling like angelo's fart
+			
+
 		}
 		else {
 			System.out.println("Unsupported Pet Type");
