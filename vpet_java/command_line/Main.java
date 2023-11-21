@@ -25,6 +25,7 @@ public class Main {
 	public void petTesting() {
 		if (pet instanceof Dog) {
 			System.out.println(pet);
+			pet.listOfTricks();
 
 		} else {
 			System.out.println("Unsupported Pet Type");
@@ -35,6 +36,7 @@ public class Main {
 		Main newProgram = new Main();
 		newProgram.startUp();
 		newProgram.petTesting();
+		
 	}
 
 }
