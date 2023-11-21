@@ -81,16 +81,22 @@ public class Dog extends Pet {
 		String fullString = "------------------------" + '\n';
 		spaces = buildSpaces(petName, "Name");
 		fullString += "| Name: " + spaces + petName + "|" + '\n';
+
 		spaces = buildSpaces(String.valueOf(petAge), "Age");
 		fullString += "| Age: " + spaces + petAge + "|" + '\n';
+
 		spaces = buildSpaces(String.valueOf(petAge), "Happiness");
 		fullString += "| Happiness: " + spaces + happinessLevel + "|" + '\n';
+
 		spaces = buildSpaces(String.valueOf(petAge), "Cleanliness");
 		fullString += "| Cleanliness: " + spaces + cleanLevel + "|" + '\n';
+
 		spaces = buildSpaces(String.valueOf(petAge), "Hunger");
 		fullString += "| Hunger: " + spaces + hungerLevel + "|" + '\n';
+
 		spaces = buildSpaces(String.valueOf(petAge), "Thirst");
 		fullString += "| Thirst: " + spaces + thirstLevel + "|" + '\n';
+
 		fullString += "------------------------" + '\n';
 		return fullString;
 	}
