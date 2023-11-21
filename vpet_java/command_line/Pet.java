@@ -117,5 +117,7 @@ public class Pet {
 		}
 	}
 	
-	
+	public void listOfTricks() {
+		System.out.println("Generic Method");
+	}
 }
