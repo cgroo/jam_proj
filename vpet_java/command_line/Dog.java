@@ -70,7 +70,7 @@ public class Dog extends Pet {
 
 	private String buildSpaces(String value, String field) {
 		String spaces = "";
-		for (int i = 0; i < 18 - value.length() - field.length(); i++) {
+		for (int i = 0; i < 19 - value.length() - field.length(); i++) {
 			spaces += " ";
 		}
 		return spaces;
@@ -78,26 +78,26 @@ public class Dog extends Pet {
 
 	public String toString() {
 		String spaces = "";
-		String fullString = "------------------------" + '\n';
+		String fullString = "-------------------------" + '\n';
 		spaces = buildSpaces(petName, "Name");
-		fullString += "| Name: " + spaces + petName + "|" + '\n';
+		fullString += "| Name: " + spaces + petName + " |" + '\n';
 
 		spaces = buildSpaces(String.valueOf(petAge), "Age");
-		fullString += "| Age: " + spaces + petAge + "|" + '\n';
+		fullString += "| Age: " + spaces + petAge + " |" + '\n';
 
-		spaces = buildSpaces(String.valueOf(petAge), "Happiness");
-		fullString += "| Happiness: " + spaces + happinessLevel + "|" + '\n';
+		spaces = buildSpaces(String.valueOf(happinessLevel), "Happiness");
+		fullString += "| Happiness: " + spaces + happinessLevel + " |" + '\n';
 
-		spaces = buildSpaces(String.valueOf(petAge), "Cleanliness");
-		fullString += "| Cleanliness: " + spaces + cleanLevel + "|" + '\n';
+		spaces = buildSpaces(String.valueOf(cleanLevel), "Cleanliness");
+		fullString += "| Cleanliness: " + spaces + cleanLevel + " |" + '\n';
 
-		spaces = buildSpaces(String.valueOf(petAge), "Hunger");
-		fullString += "| Hunger: " + spaces + hungerLevel + "|" + '\n';
+		spaces = buildSpaces(String.valueOf(hungerLevel), "Hunger");
+		fullString += "| Hunger: " + spaces + hungerLevel + " |" + '\n';
 
-		spaces = buildSpaces(String.valueOf(petAge), "Thirst");
-		fullString += "| Thirst: " + spaces + thirstLevel + "|" + '\n';
+		spaces = buildSpaces(String.valueOf(thirstLevel), "Thirst");
+		fullString += "| Thirst: " + spaces + thirstLevel + " |" + '\n';
 
-		fullString += "------------------------" + '\n';
+		fullString += "-------------------------" + '\n';
 		return fullString;
 	}
 }
