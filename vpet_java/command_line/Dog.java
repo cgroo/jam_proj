@@ -100,4 +100,12 @@ public class Dog extends Pet {
 		fullString += "-------------------------" + '\n';
 		return fullString;
 	}
+
+	@Override
+	public void listOfTricks() {
+		String[] tricks = {"Sit", "Shake", "Roll Over", "Bang", "Down"};
+		for (String trick : tricks) {
+			System.out.println(trick);
+		}
+	}
 }
