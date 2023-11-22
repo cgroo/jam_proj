@@ -1,13 +1,12 @@
 package command_line;
 
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 	private Pet pet;
 	private User user;
 
-	public void initialise() {
+	private void initialise() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("What is your name?");
 		String name = input.nextLine();
@@ -50,7 +49,7 @@ public class Main {
 	 * 
 	 */
 
-	public void gameRules() {
+	private void gameRules() {
 		System.out.println("Welcome to 'this game' (STC)  ");
 		System.out.println("Here are the rules of the game:");
 		System.out.println(
@@ -73,8 +72,83 @@ public class Main {
 
 	}
 
-	public void mainLogic() {
+	private void callTrick() {
 
+	}
+
+	private void callPlay() {
+
+	}
+
+	private void callClean() {
+
+	}
+
+	private void callShop() {
+
+	}
+
+	private void callWork() {
+
+	}
+
+	private void callWater() {
+
+	}
+
+	private Boolean checkPet() {
+		if (pet.getCleanLevel() == 0) {
+			return true;
+		}
+		if (pet.getHappinessLevel() == 0) {
+			return true;
+		}
+		if (pet.getHungerLevel() == 0) {
+			return true;
+		}
+		if (pet.getThirstLevel() == 0) {
+			return true;
+		}
+		return false;
+	}
+
+	private void endGame() {
+		System.out.println("Game Over. Your pet has died of {the reason}");
+		System.out.println("Put the user's stats for their run");
+		user = null;
+		pet = null;
+	}
+
+	private void mainLogic() {
+		Scanner listen = new Scanner(System.in);
+		while (true) {
+			String input = listen.nextLine();
+
+			if ("trick".equals(input.toLowerCase())) {
+				callTrick();
+			} else if ("play".equals(input.toLowerCase())) {
+				callPlay();
+			} else if ("clean".equals(input.toLowerCase())) {
+				callClean();
+			} else if ("shop".equals(input.toLowerCase())) {
+				callShop();
+			} else if ("work".equals(input.toLowerCase())) {
+				callWork();
+			} else if ("water".equals(input.toLowerCase())) {
+				callWater();
+			}
+
+			else {
+				System.out.println("Command not recognised, please try again.");
+			}
+
+			if (checkPet()) {
+				break;
+			}
+
+		}
+		listen.close();
+		endGame();
 	}
 
 	public static void main(String[] args) {
