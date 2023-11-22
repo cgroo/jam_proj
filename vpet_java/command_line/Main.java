@@ -6,7 +6,7 @@ public class Main {
 	private Pet pet;
 	private User user;
 
-	public void startUp() {
+	public void initialise() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("What is your name?");
 		String name = input.nextLine();
@@ -34,9 +34,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		Main newProgram = new Main();
-		newProgram.startUp();
+		newProgram.initialise();
 		newProgram.petTesting();
-		
+
 	}
 
 }
