@@ -10,12 +10,9 @@ public class ScheduledEvents {
     private Timer thirstTimer;
     private Timer happinessTimer;
 
-    private static int gameSeconds;
-
     public ScheduledEvents(Pet pet) {
         this.pet = pet;
         startTimers();
-
     }
 
     public void startTimers() {
