@@ -148,7 +148,6 @@ public class Main {
 
 		}
 		listen.close();
-		endGame();
 	}
 
 	public static void main(String[] args) {
@@ -158,6 +157,7 @@ public class Main {
 		// newProgram.petTesting();
 		newProgram.gameRules();
 		newProgram.mainLogic();
+		newProgram.endGame();
 
 	}
 
