@@ -57,7 +57,6 @@ public class ScheduledEvents {
         @Override
         public void run() {
             pet.removeHunger(1);
-            System.out.println("Hunger reduced. Current hunger level: " + pet.getHungerLevel());
         }
     }
 
@@ -65,7 +64,6 @@ public class ScheduledEvents {
         @Override
         public void run() {
             pet.removeClean(1);
-            System.out.println("Cleanliness reduced. Current cleanliness level: " + pet.getCleanLevel());
         }
     }
 
@@ -73,7 +71,6 @@ public class ScheduledEvents {
         @Override
         public void run() {
             pet.removeThirst(1);
-            System.out.println("Thirst reduced. Current thirst level: " + pet.getThirstLevel());
         }
     }
 
@@ -81,7 +78,6 @@ public class ScheduledEvents {
         @Override
         public void run() {
             pet.removeHappy(1);
-            System.out.println("Happiness reduced. Current happiness level: " + pet.getHappinessLevel());
         }
     }
 }
