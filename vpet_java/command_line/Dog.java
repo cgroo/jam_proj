@@ -68,42 +68,9 @@ public class Dog extends Pet {
 		}
 	}
 
-	private String buildSpaces(String value, String field) {
-		String spaces = "";
-		for (int i = 0; i < 19 - value.length() - field.length(); i++) {
-			spaces += " ";
-		}
-		return spaces;
-	}
-
-	public String toString() {
-		String spaces = "";
-		String fullString = "-------------------------" + '\n';
-		spaces = buildSpaces(petName, "Name");
-		fullString += "| Name: " + spaces + petName + " |" + '\n';
-
-		spaces = buildSpaces(String.valueOf(petAge), "Age");
-		fullString += "| Age: " + spaces + petAge + " |" + '\n';
-
-		spaces = buildSpaces(String.valueOf(happinessLevel), "Happiness");
-		fullString += "| Happiness: " + spaces + happinessLevel + " |" + '\n';
-
-		spaces = buildSpaces(String.valueOf(cleanLevel), "Cleanliness");
-		fullString += "| Cleanliness: " + spaces + cleanLevel + " |" + '\n';
-
-		spaces = buildSpaces(String.valueOf(hungerLevel), "Hunger");
-		fullString += "| Hunger: " + spaces + hungerLevel + " |" + '\n';
-
-		spaces = buildSpaces(String.valueOf(thirstLevel), "Thirst");
-		fullString += "| Thirst: " + spaces + thirstLevel + " |" + '\n';
-
-		fullString += "-------------------------" + '\n';
-		return fullString;
-	}
-
 	@Override
 	public void listOfTricks() {
-		String[] tricks = {"Sit", "Shake", "Roll Over", "Bang", "Down"};
+		String[] tricks = { "Sit", "Shake", "Roll Over", "Bang", "Down" };
 		for (String trick : tricks) {
 			System.out.println(trick);
 		}
