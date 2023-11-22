@@ -23,39 +23,43 @@ public class ScheduledEvents {
         cleanlinessTimer = new Timer();
         thirstTimer = new Timer();
         happinessTimer = new Timer();
-        hungerTimer.scheduleAtFixedRate(new HungerReductionTask(), 10000, 10000);
-        cleanlinessTimer.scheduleAtFixedRate(new CleanlinessReductionTask(), 10000, 10000);
-        thirstTimer.scheduleAtFixedRate(new ThirstReductionTask(), 10000, 10000);
-        happinessTimer.scheduleAtFixedRate(new HappinessReductionTask(), 10000, 10000);
+        hungerTimer.scheduleAtFixedRate(new HungerReductionTask(), 0, 10000);
+        cleanlinessTimer.scheduleAtFixedRate(new CleanlinessReductionTask(), 2500, 10000);
+        thirstTimer.scheduleAtFixedRate(new ThirstReductionTask(), 5000, 10000);
+        happinessTimer.scheduleAtFixedRate(new HappinessReductionTask(), 7500, 10000);
     }
 
-    public void restartTimer() {
-        if (gameSeconds % 40 == 0) {
-            hungerTimer.cancel();
-            hungerTimer = new Timer();
-            hungerTimer.scheduleAtFixedRate(new HungerReductionTask(), 10000, 10000);
-        }
-        if (gameSeconds % 40 == 10) {
-            cleanlinessTimer.cancel();
-            cleanlinessTimer = new Timer();
-            cleanlinessTimer.scheduleAtFixedRate(new CleanlinessReductionTask(), 10000, 10000);
-        }
-        if (gameSeconds % 40 == 20) {
-            thirstTimer.cancel();
-            thirstTimer = new Timer();
-            thirstTimer.scheduleAtFixedRate(new ThirstReductionTask(), 10000, 10000);
-        }
-        if (gameSeconds % 40 == 30) {
-            happinessTimer.cancel();
-            happinessTimer = new Timer();
-            happinessTimer.scheduleAtFixedRate(new HappinessReductionTask(), 10000, 10000);
+    public void restartTimer(String field) {
+        switch (field) {
+            case "Hunger":
+                hungerTimer.cancel();
+                hungerTimer = new Timer();
+                hungerTimer.scheduleAtFixedRate(new HungerReductionTask(), 10000, 10000);
+                break;
+            case "Cleanliness":
+                cleanlinessTimer.cancel();
+                cleanlinessTimer = new Timer();
+                cleanlinessTimer.scheduleAtFixedRate(new CleanlinessReductionTask(), 10000, 10000);
+                break;
+            case "Thirst":
+                thirstTimer.cancel();
+                thirstTimer = new Timer();
+                thirstTimer.scheduleAtFixedRate(new ThirstReductionTask(), 10000, 10000);
+                break;
+            case "Happiness":
+                happinessTimer.cancel();
+                happinessTimer = new Timer();
+                happinessTimer.scheduleAtFixedRate(new HappinessReductionTask(), 10000, 10000);
+                break;
+            default:
+                System.out.println("Invalid field provided.");
         }
     }
 
     private class HungerReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeHunger(10);
+            pet.removeHunger(1);
             System.out.println("Hunger reduced. Current hunger level: " + pet.getHungerLevel());
         }
     }
@@ -63,7 +67,7 @@ public class ScheduledEvents {
     private class CleanlinessReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeClean(10);
+            pet.removeClean(1);
             System.out.println("Cleanliness reduced. Current cleanliness level: " + pet.getCleanLevel());
         }
     }
@@ -71,7 +75,7 @@ public class ScheduledEvents {
     private class ThirstReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeThirst(10);
+            pet.removeThirst(1);
             System.out.println("Thirst reduced. Current thirst level: " + pet.getThirstLevel());
         }
     }
@@ -79,24 +83,8 @@ public class ScheduledEvents {
     private class HappinessReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeHappy(10);
+            pet.removeHappy(1);
             System.out.println("Happiness reduced. Current happiness level: " + pet.getHappinessLevel());
-        }
-    }
-
-    public static void main(String[] args) {
-        Pet pet = new Dog("Chonccy");
-        ScheduledEvents timedEvents = new ScheduledEvents(pet);
-        Timer testTimer = new Timer();
-        testTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                gameSeconds++;
-                System.out.println(gameSeconds);
-            }
-        }, 0, 1000);
-        while (true) {
-            timedEvents.restartTimer();
         }
     }
 }
