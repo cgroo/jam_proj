@@ -6,6 +6,7 @@ import java.util.Random;
 public class Main {
 	private Pet pet;
 	private User user;
+	private int death;
 
 	private void initialise() {
 		Scanner input = new Scanner(System.in);
@@ -154,20 +155,20 @@ public class Main {
 		// need to buy from shop
 	}
 
-	private Boolean checkPet() {
+	private int checkPet() {
 		if (pet.getCleanLevel() == 0) {
-			return true;
+			return 1;
 		}
 		if (pet.getHappinessLevel() == 0) {
-			return true;
+			return 2;
 		}
 		if (pet.getHungerLevel() == 0) {
-			return true;
+			return 3;
 		}
 		if (pet.getThirstLevel() == 0) {
-			return true;
+			return 4;
 		}
-		return false;
+		return 0;
 	}
 
 	private void endGame() {
@@ -199,8 +200,8 @@ public class Main {
 			else {
 				System.out.println("Command not recognised, please try again.");
 			}
-
-			if (checkPet()) {
+			int check = checkPet();
+			if (check != 0) {
 				break;
 			}
 
