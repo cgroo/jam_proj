@@ -1,6 +1,7 @@
 package command_line;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 	private Pet pet;
@@ -73,27 +74,57 @@ public class Main {
 	}
 
 	private void callTrick() {
-
+		Scanner trickListener = new Scanner(System.in);
+		// Ask nebo
+		trickListener.close();
 	}
 
 	private void callPlay() {
-
+		Scanner playListener = new Scanner(System.in);
+		System.out.println("Let's play some games! What would you like to play?" + '\n');
+		System.out.println("Type 'INFO' for more information on the options");
+		System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
+		playListener.close();
 	}
 
 	private void callClean() {
-
+		Scanner cleanListener = new Scanner(System.in);
+		System.out.println("Its time to clean up! How would youl ike to clean your pet?" + '\n');
+		System.out.println("Type 'INFO' for more information on the options");
+		System.out.println(
+				"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe, '0' to go back home.)");
+		cleanListener.close();
 	}
 
 	private void callShop() {
-
+		Scanner shopListener = new Scanner(System.in);
+		System.out.println("Let's go shopping. What would you like to buy?" + '\n');
+		System.out.println("Type 'INFO' for more information on the options");
+		System.out.println(
+				"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats, '0' to go back home");
+		shopListener.close();
 	}
 
 	private void callWork() {
-
+		Scanner workListener = new Scanner(System.in);
+		System.out.println("Time to earn so bread." + '\n');
+		System.out.println("If at any point you want to go home type '0'");
+		Random rand = new Random();
+		int rand_int = rand.nextInt(2);
+		if (rand_int == 0) {
+			System.out.println("Please type out the following, word for word, character for character.");
+			// List of possible prompts randomly choose one using rand_int2
+		} else if (rand_int == 1) {
+			System.out.println("What is the answer to the following question: ");
+			// give math question and start timer
+		}
+		workListener.close();
 	}
 
 	private void callWater() {
-
+		System.out.println("You fill up the water bowl");
+		// Consider limiting amount of water user can get every hour, if out of water
+		// need to buy from shop
 	}
 
 	private Boolean checkPet() {
