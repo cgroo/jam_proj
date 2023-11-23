@@ -7,6 +7,7 @@ public class Main {
 	private Pet pet;
 	private User user;
 	private int death;
+	private final EasyTimer easyTimer = new EasyTimer();
 
 	private void initialise() {
 		Scanner input = new Scanner(System.in);
@@ -90,6 +91,14 @@ public class Main {
 			String playInput = playListener.nextLine();
 			if (playInput == "0") {
 				break;
+			}
+
+			if ("1".equals(playInput)) {
+				System.out.println("Let's play fetch!");
+				easyTimer.countdown(3, () -> {
+					System.out.println("Fetch!");
+					// Add logic for playing fetch here
+				});
 			}
 		}
 		playListener.close();
@@ -217,6 +226,8 @@ public class Main {
 		newProgram.gameRules();
 		newProgram.mainLogic();
 		newProgram.endGame();
+
+		newProgram.easyTimer.shutdown();
 
 	}
 
