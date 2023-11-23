@@ -1,8 +1,8 @@
 package command_line;
 
 public class User {
-	String userName;
-	int userMoney;
+	private String userName;
+	private int userMoney;
 
 	public User(String name) {
 		userName = name;
