@@ -80,43 +80,70 @@ public class Main {
 	}
 
 	private void callPlay() {
-		Scanner playListener = new Scanner(System.in);
 		System.out.println("Let's play some games! What would you like to play?" + '\n');
-		System.out.println("Type 'INFO' for more information on the options");
-		System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
+		Scanner playListener = new Scanner(System.in);
+		while (true) {
+			System.out.println("Type 'INFO' for more information on the options");
+			System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
+
+			String playInput = playListener.nextLine();
+			if (playInput == "0") {
+				break;
+			}
+		}
 		playListener.close();
 	}
 
 	private void callClean() {
+		System.out.println("Its time to clean up! How would you like to clean your pet?" + '\n');
 		Scanner cleanListener = new Scanner(System.in);
-		System.out.println("Its time to clean up! How would youl ike to clean your pet?" + '\n');
-		System.out.println("Type 'INFO' for more information on the options");
-		System.out.println(
-				"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe, '0' to go back home.)");
+		while (true) {
+			System.out.println("Type 'INFO' for more information on the options");
+			System.out.println(
+					"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe, '0' to go back home.)");
+			String cleanInput = cleanListener.nextLine();
+			if (cleanInput == "0") {
+				break;
+			}
+		}
 		cleanListener.close();
+
 	}
 
 	private void callShop() {
-		Scanner shopListener = new Scanner(System.in);
 		System.out.println("Let's go shopping. What would you like to buy?" + '\n');
-		System.out.println("Type 'INFO' for more information on the options");
-		System.out.println(
-				"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats, '0' to go back home");
+		Scanner shopListener = new Scanner(System.in);
+		while (true) {
+			System.out.println("Type 'INFO' for more information on the options");
+			System.out.println(
+					"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats, '0' to go back home");
+			String shopInput = shopListener.nextLine();
+			if (shopInput == "0") {
+				break;
+			}
+		}
 		shopListener.close();
 	}
 
 	private void callWork() {
 		Scanner workListener = new Scanner(System.in);
 		System.out.println("Time to earn so bread." + '\n');
-		System.out.println("If at any point you want to go home type '0'");
-		Random rand = new Random();
-		int rand_int = rand.nextInt(2);
-		if (rand_int == 0) {
-			System.out.println("Please type out the following, word for word, character for character.");
-			// List of possible prompts randomly choose one using rand_int2
-		} else if (rand_int == 1) {
-			System.out.println("What is the answer to the following question: ");
-			// give math question and start timer
+		while (true) {
+			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
+			String workInput = workListener.nextLine();
+			if (workInput == "1") {
+				Random rand = new Random();
+				int rand_int = rand.nextInt(2);
+				if (rand_int == 0) {
+					System.out.println("Please type out the following, word for word, character for character.");
+					// List of possible prompts randomly choose one using rand_int2
+				} else if (rand_int == 1) {
+					System.out.println("What is the answer to the following question: ");
+					// give math question and start timer
+				}
+			} else if (workInput == "0") {
+				break;
+			}
 		}
 		workListener.close();
 	}
