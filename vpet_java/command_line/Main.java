@@ -97,9 +97,30 @@ public class Main {
 				System.out.println("Let's play fetch!");
 				easyTimer.countdown(3, () -> {
 					System.out.println("Fetch!");
-					// Add logic for playing fetch here
+					easyTimer.wait(10);
+					System.out.println(pet.getName() + " has come back with the ball!");
+					pet.addHappy(4);
+					pet.removeHunger(1);
+					pet.removeThirst(2);
 				});
 			}
+			/**
+			 * else if ("2".equals(playInput)) {
+			 * int spaceCount = 0;
+			 * System.out.println("Let's play tug of war");
+			 * easyTimer.countdown(10), () -> {
+			 * System.out.println("Game Over");
+			 * };
+			 * while (true) {
+			 * String tugInput = playListener.nextLine();
+			 * if (tugInput.equals(" ")) {
+			 * spaceCount +=1;
+			 * }
+			 * if (easyTimer.get)
+			 * }
+			 * }
+			 * 
+			 */
 		}
 		playListener.close();
 	}
