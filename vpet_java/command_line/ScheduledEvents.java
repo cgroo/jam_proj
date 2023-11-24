@@ -53,6 +53,13 @@ public class ScheduledEvents {
         }
     }
 
+    public void endTimers() {
+        hungerTimer.cancel();
+        cleanlinessTimer.cancel();
+        thirstTimer.cancel();
+        happinessTimer.cancel();
+    }
+
     private class HungerReductionTask extends TimerTask {
         @Override
         public void run() {

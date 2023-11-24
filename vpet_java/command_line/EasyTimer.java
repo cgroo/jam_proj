@@ -1,5 +1,6 @@
 package command_line;
 
+import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -42,6 +43,25 @@ public class EasyTimer {
                     Thread.currentThread().interrupt();
                 }
             }
+        }, 0, TimeUnit.SECONDS);
+    }
+
+    public void waitForInput(int seconds, Runnable actionOnKeyPress, Runnable actionOnTimeout) {
+        executorService.schedule(() -> {
+            long endTime = System.currentTimeMillis() + seconds * 1000L;
+            Scanner tempListener = new Scanner(System.in);
+            String input = null;
+
+            while (System.currentTimeMillis() < endTime) {
+                input = tempListener.nextLine();
+                if (input.equals(" ")) {
+                    tempListener.close();
+                    actionOnKeyPress.run();
+                    return;
+                }
+            }
+            tempListener.close();
+            actionOnTimeout.run();
         }, 0, TimeUnit.SECONDS);
     }
 
