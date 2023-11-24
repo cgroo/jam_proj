@@ -29,7 +29,7 @@ public class Main {
 		if (petType.toLowerCase().equals("rat")) {
 			pet = new Rat(petName);
 		}
-		petTask = new Task(pet);
+		petTask = new Task(pet, user);
 	}
 
 	private void gameRules() {
