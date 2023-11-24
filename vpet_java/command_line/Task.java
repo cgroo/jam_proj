@@ -7,11 +7,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Task {
     private Pet pet;
+    private User user;
     private final EasyTimer easyTimer = new EasyTimer();
     private final Random randGenerator = new Random();
 
-    public Task(Pet pet) {
+    public Task(Pet pet, User user) {
         this.pet = pet;
+        this.user = user;
     }
 
     public void playFetch() {
