@@ -181,10 +181,22 @@ public class Task {
     }
 
     public void feed(int foodCode) {
-        if (foodCode > user.getFoodInventory().getNamesList().size() || foodCode <= 0) {
-            System.out.println("That is not a valid food code");
-        } else {
+        Scanner tempListener = new Scanner(System.in);
+        if (user.getFoodInventory().getCodesList().contains(foodCode)) {
+            int index = user.getFoodInventory().getCodesList().indexOf(foodCode);
+            System.out.println("\n" + user.getFoodInventory().getNamesList().get(index));
+            System.out.println(user.getFoodInventory().getDescriptionsList().get(index));
+            System.out.println("Are you sure you want to feed " + pet.getName() + " one "
+                    + user.getFoodInventory().getNamesList().get(index) + "? Type(Y/N)");
+            String verify = tempListener.nextLine();
+            if (("Y").equals(verify)) {
 
+            } else if (("N").equals(verify)) {
+                System.out.println("ok, what would youl like to do?");
+            }
+        } else {
+            System.out.println("That is not a valid food code");
         }
+        tempListener.close();
     }
 }
