@@ -27,6 +27,10 @@ public class User {
 		}
 	}
 
+	public FoodBag getFoodInventory() {
+		return inventory;
+	}
+
 	public void displayFoodInventory() {
 		ArrayList<String> foodNames = inventory.getNamesList();
 		ArrayList<Integer> foodCodes = inventory.getCodesList();

@@ -181,6 +181,10 @@ public class Task {
     }
 
     public void feed(int foodCode) {
+        if (foodCode > user.getFoodInventory().getNamesList().size() || foodCode <= 0) {
+            System.out.println("That is not a valid food code");
+        } else {
 
+        }
     }
 }
