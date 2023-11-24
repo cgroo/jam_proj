@@ -1,7 +1,6 @@
 package command_line;
 
 import java.util.Scanner;
-import java.util.Random;
 
 public class Main {
 	private Pet pet;
@@ -66,16 +65,16 @@ public class Main {
 		while (true) {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
-			String playInput = playListener.nextLine();
-			if ("0".equals(playInput)) {
+			int playInput = playListener.nextInt();
+			if (playInput == 0) {
 				break;
-			} else if ("1".equals(playInput)) {
+			} else if (playInput == 1) {
 				petTask.playFetch();
 
-			} else if ("2".equals(playInput)) {
+			} else if (playInput == 2) {
 				petTask.playTugOfWar();
 
-			} else if ("3".equals(playInput)) {
+			} else if (playInput == 3) {
 				petTask.playPeekaboo();
 			}
 		}
@@ -89,16 +88,16 @@ public class Main {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println(
 					"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe(1 min), '0' to go back home.)");
-			String cleanInput = cleanListener.nextLine();
-			if ("0".equals(cleanInput)) {
+			int cleanInput = cleanListener.nextInt();
+			if (cleanInput == 0) {
 				break;
-			} else if ("1".equals(cleanInput)) {
+			} else if (cleanInput == 1) {
 				petTask.clean("Full");
-			} else if ("2".equals(cleanInput)) {
+			} else if (cleanInput == 2) {
 				petTask.clean("Brush");
-			} else if ("3".equals(cleanInput)) {
+			} else if (cleanInput == 3) {
 				petTask.clean("Partial");
-			} else if ("4".equals(cleanInput)) {
+			} else if (cleanInput == 4) {
 				petTask.clean("D&W");
 			}
 		}
@@ -111,10 +110,18 @@ public class Main {
 		while (true) {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println(
-					"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats, '0' to go back home");
-			String shopInput = shopListener.nextLine();
-			if ("0".equals(shopInput)) {
+					"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats($20), '0' to go back home");
+			int shopInput = shopListener.nextInt();
+			if (shopInput == 0) {
 				break;
+			} else if (user.getMoney() > 0) {
+				System.out.println("Nah bro, you're broke");
+			} else if (shopInput == 1) {
+				petTask.shop("Food");
+			} else if (shopInput == 2) {
+				petTask.shop("Treats");
+			} else if (shopInput == 3) {
+				petTask.shop("Training");
 			}
 		}
 		shopListener.close();
@@ -125,15 +132,30 @@ public class Main {
 		System.out.println("Time to earn so bread." + '\n');
 		while (true) {
 			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
-			String workInput = workListener.nextLine();
+			int workInput = workListener.nextInt();
 
-			if ("0".equals(workInput)) {
+			if (workInput == 0) {
 				break;
-			} else if ("1".equals(workInput)) {
+			} else if (workInput == 1) {
 				petTask.work();
 			}
 		}
 		workListener.close();
+	}
+
+	private void callFood() {
+		Scanner foodListener = new Scanner(System.in);
+		while (true) {
+			System.out.println("Please enter the food code or '0' to go back");
+			user.displayFoodInventory();
+			int foodInput = foodListener.nextInt();
+			if (foodInput == 0) {
+				break;
+			} else {
+				petTask.feed(foodInput);
+			}
+		}
+		foodListener.close();
 	}
 
 	private void callWater() {
@@ -167,6 +189,8 @@ public class Main {
 		System.out.println("Put the user's stats for their run");
 		user = null;
 		pet = null;
+		reason = null;
+		petTask = null;
 	}
 
 	private void mainLogic() {
@@ -183,6 +207,8 @@ public class Main {
 				callShop();
 			} else if ("work".equals(input.toLowerCase())) {
 				callWork();
+			} else if ("food".equals(input.toLowerCase())) {
+				callFood();
 			} else if ("water".equals(input.toLowerCase())) {
 				callWater();
 			} else {
@@ -194,6 +220,7 @@ public class Main {
 			}
 		}
 		listen.close();
+
 	}
 
 	public static void main(String[] args) {
