@@ -9,12 +9,10 @@ public class EasyTimer {
     private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private long startTime;
     private long duration;
-    private boolean timerOn;
 
     public void countdown(int seconds, Runnable actionOnCompletion) {
         this.startTime = System.currentTimeMillis();
         this.duration = seconds * 1000L;
-        this.timerOn = true;
         executorService.schedule(() -> {
             for (int i = seconds; i > 0; i--) {
                 System.out.println(i);
