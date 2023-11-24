@@ -94,4 +94,67 @@ public class Task {
             });
         }
     }
+
+    public void work() {
+        Scanner tempListener = new Scanner(System.in);
+        Random rand = new Random();
+        int rand_int = rand.nextInt(2);
+        if (rand_int == 0) {
+            System.out.println("Please type out the following, word for word, character for character.");
+            String[] typingChallenge = {
+                    "We adopted our furry friend from the local shelter! Their name is " + pet.getName()
+                            + ", and they love cuddles and playtime. They are 123 years old, It was love at first sight when we saw them wagging tail and adorable eyes. Now, they're a cherished member of our family.",
+                    "Session #1 - Teaching tricks to " + pet.getName()
+                            + "! She mastered 'RollOver' and 'HighFive'. Progress is fantastic, and she's earning treats! Keep up the good work, "
+                            + pet.getName() + "!",
+                    "Time for a checkup! Don't forget to schedule a vet visit for " + pet.getName()
+                            + ". Regular care keeps her happy and healthy. Vaccinations due in 14 days!",
+                    "Join us for a playdate at the park! Bring your pets for some fun. Date: Sat, Time: 2:00 PM. Let's have a pawsitively good time!",
+                    "Day 7 of our cross-country journey! Explored the mountains and encountered a friendly squirrel! "
+                            + pet.getName() + "is loving the outdoors. Camping under the stars tonight." };
+
+            Random random = new Random();
+            int randomIndex = random.nextInt(typingChallenge.length);
+
+            String randomString = typingChallenge[randomIndex];
+            System.out.println("\n" + randomString);
+            String answer = tempListener.nextLine();
+            if (answer.equals(randomString)) {
+                System.out.println("That was a bit tricky, good job! You gained $30");
+                user.modifyMoney(30);
+            } else {
+                System.out.println("I'm not happy with your performance");
+            }
+
+        } else if (rand_int == 1) {
+            System.out.println("What is the answer to the following question: ");
+            String[] mathQuestions = {
+                    "What is the sum of 245 and 387?",
+                    "Multiply 18 by 13.",
+                    "Subtract 64 from 129.",
+                    "Divide 144 by 12.",
+                    "Calculate the product of 7 and 9.",
+                    "Add 56 and 78.",
+                    "Subtract 35 from 50.",
+                    "What is 3 squared?",
+                    "Find the result of 25 divided by 5.",
+                    "Multiply 16 by 4."
+            };
+            int[] mathAnswer = { 632, 234, 65, 12, 63, 134, 15, 9, 5, 6 };
+
+            Random random = new Random();
+            int randomIndex = random.nextInt(mathQuestions.length);
+
+            String randomQuestion = mathQuestions[randomIndex];
+            System.out.println("\n" + randomQuestion);
+            int answer = tempListener.nextInt();
+            if (answer == mathAnswer[randomIndex]) {
+                System.out.println("Correct! You gain $20");
+                user.modifyMoney(20);
+            } else {
+                System.out.println("Incorrect.");
+            }
+        }
+        tempListener.close();
+    }
 }
