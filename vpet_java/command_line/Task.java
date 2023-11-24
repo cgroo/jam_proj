@@ -50,6 +50,7 @@ public class Task {
     public void playPeekaboo() {
         int threshold = 2;
         int limit = 0;
+        int counter = 0;
         AtomicBoolean failed = new AtomicBoolean(false);
         while (!failed.get()) {
             while (limit < 3) {
@@ -67,6 +68,8 @@ public class Task {
                 });
             });
             threshold /= 2;
+            counter += 1;
         }
+        pet.modifyHunger((-1 * counter));
     }
 }
