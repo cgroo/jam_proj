@@ -30,6 +30,10 @@ public class User {
 	public void displayFoodInventory() {
 		ArrayList<String> foodNames = inventory.getNamesList();
 		ArrayList<Integer> foodCodes = inventory.getCodesList();
-		ArrayList<String> foodDescriptions = inventory.getDescriptionsList();
+		ArrayList<Integer> foodQuantity = inventory.getQuantityList();
+		System.out.println("Food Names  |  Food Code  | Food Quantity");
+		for (int i = 0; i < foodNames.size(); i++) {
+			System.out.println(foodNames.get(i) + "     " + foodCodes.get(i) + "      x" + foodQuantity.get(i));
+		}
 	}
 }
