@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class FoodBag {
     private ArrayList<String> foodNamesList;
     private ArrayList<Integer> foodCodesList;
+    private ArrayList<Integer> foodQuantityList;
     private ArrayList<String> foodDescriptionsList;
 
     public FoodBag() {
@@ -23,5 +24,9 @@ public class FoodBag {
 
     public ArrayList<String> getDescriptionsList() {
         return foodDescriptionsList;
+    }
+
+    public ArrayList<Integer> getQuantityList() {
+        return foodQuantityList;
     }
 }
