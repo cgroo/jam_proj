@@ -6,7 +6,7 @@ import java.util.Random;
 public class Main {
 	private Pet pet;
 	private User user;
-	private int death;
+	private String reason;
 	private Task petTask;
 
 	private void initialise() {
@@ -32,27 +32,6 @@ public class Main {
 		petTask = new Task(pet);
 	}
 
-	/**
-	 * public void petTesting() {
-	 * if (pet instanceof Dog) {
-	 * System.out.println(pet);
-	 * pet.listOfTricks();
-	 * }
-	 * 
-	 * else if (pet instanceof Cat) {
-	 * System.out.println(pet);
-	 * }
-	 * 
-	 * else if (pet instanceof Rat) {
-	 * System.out.println(pet);
-	 * 
-	 * } else {
-	 * System.out.println("Unsupported Pet Type");
-	 * }
-	 * }
-	 * 
-	 */
-
 	private void gameRules() {
 		System.out.println("Welcome to 'this game' (STC)  ");
 		System.out.println("Here are the rules of the game:");
@@ -73,7 +52,6 @@ public class Main {
 		System.out.println("We hope you enjoy the game and remember");
 		System.out.println("Don't let your pet die" + '\n');
 		System.out.println("Keywords: 'Tricks', 'Play', 'Clean', 'Shop', 'Work', 'Water'");
-
 	}
 
 	private void callTrick() {
@@ -88,7 +66,6 @@ public class Main {
 		while (true) {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
-
 			String playInput = playListener.nextLine();
 			if (playInput == "0") {
 				break;
@@ -100,6 +77,8 @@ public class Main {
 			} else if ("2".equals(playInput)) {
 				petTask.playTugOfWar();
 
+			} else if ("3".equals(playInput)) {
+				petTask.playPeekaboo();
 			}
 			playListener.close();
 		}
@@ -111,14 +90,13 @@ public class Main {
 		while (true) {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println(
-					"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe, '0' to go back home.)");
+					"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe(1 min), '0' to go back home.)");
 			String cleanInput = cleanListener.nextLine();
 			if (cleanInput == "0") {
 				break;
 			}
 		}
 		cleanListener.close();
-
 	}
 
 	private void callShop() {
@@ -165,24 +143,28 @@ public class Main {
 		// need to buy from shop
 	}
 
-	private int checkPet() {
+	private boolean checkPetDeath() {
 		if (pet.getCleanLevel() == 0) {
-			return 1;
+			reason = "Stinkiness";
+			return true;
 		}
 		if (pet.getHappinessLevel() == 0) {
-			return 2;
+			reason = "Depression";
+			return true;
 		}
 		if (pet.getHungerLevel() == 0) {
-			return 3;
+			reason = "Malnurishment";
+			return true;
 		}
 		if (pet.getThirstLevel() == 0) {
-			return 4;
+			reason = "drinking dirty ass drain water cause you neglected their thirst";
+			return true;
 		}
-		return 0;
+		return true;
 	}
 
 	private void endGame() {
-		System.out.println("Game Over. Your pet has died of {the reason}");
+		System.out.println("Game Over. Your pet has died of " + reason);
 		System.out.println("Put the user's stats for their run");
 		user = null;
 		pet = null;
@@ -192,7 +174,6 @@ public class Main {
 		Scanner listen = new Scanner(System.in);
 		while (true) {
 			String input = listen.nextLine();
-
 			if ("trick".equals(input.toLowerCase())) {
 				callTrick();
 			} else if ("play".equals(input.toLowerCase())) {
@@ -205,16 +186,13 @@ public class Main {
 				callWork();
 			} else if ("water".equals(input.toLowerCase())) {
 				callWater();
-			}
-
-			else {
+			} else {
 				System.out.println("Command not recognised, please try again.");
 			}
-			int check = checkPet();
-			if (check != 0) {
+			boolean check = checkPetDeath();
+			if (check) {
 				break;
 			}
-
 		}
 		listen.close();
 	}
@@ -227,7 +205,6 @@ public class Main {
 		newProgram.gameRules();
 		newProgram.mainLogic();
 		newProgram.endGame();
-
+		petAttributeDecay.endTimers();
 	}
-
 }
