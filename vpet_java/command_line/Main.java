@@ -67,11 +67,9 @@ public class Main {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
 			String playInput = playListener.nextLine();
-			if (playInput == "0") {
+			if ("0".equals(playInput)) {
 				break;
-			}
-
-			if ("1".equals(playInput)) {
+			} else if ("1".equals(playInput)) {
 				petTask.playFetch();
 
 			} else if ("2".equals(playInput)) {
@@ -92,10 +90,9 @@ public class Main {
 			System.out.println(
 					"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe(1 min), '0' to go back home.)");
 			String cleanInput = cleanListener.nextLine();
-			if (cleanInput == "0") {
+			if ("0".equals(cleanInput)) {
 				break;
-			}
-			if ("1".equals(cleanInput)) {
+			} else if ("1".equals(cleanInput)) {
 				petTask.clean("Full");
 			} else if ("2".equals(cleanInput)) {
 				petTask.clean("Brush");
@@ -116,7 +113,7 @@ public class Main {
 			System.out.println(
 					"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats, '0' to go back home");
 			String shopInput = shopListener.nextLine();
-			if (shopInput == "0") {
+			if ("0".equals(shopInput)) {
 				break;
 			}
 		}
@@ -129,18 +126,11 @@ public class Main {
 		while (true) {
 			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
 			String workInput = workListener.nextLine();
-			if (workInput == "1") {
-				Random rand = new Random();
-				int rand_int = rand.nextInt(2);
-				if (rand_int == 0) {
-					System.out.println("Please type out the following, word for word, character for character.");
-					// List of possible prompts randomly choose one using rand_int2
-				} else if (rand_int == 1) {
-					System.out.println("What is the answer to the following question: ");
-					// give math question and start timer
-				}
-			} else if (workInput == "0") {
+
+			if ("0".equals(workInput)) {
 				break;
+			} else if ("1".equals(workInput)) {
+				petTask.work();
 			}
 		}
 		workListener.close();
