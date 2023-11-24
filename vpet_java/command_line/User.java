@@ -1,5 +1,7 @@
 package command_line;
 
+import java.util.ArrayList;
+
 public class User {
 	private String userName;
 	private int userMoney;
@@ -26,6 +28,8 @@ public class User {
 	}
 
 	public void displayFoodInventory() {
-
+		ArrayList<String> foodNames = inventory.getNamesList();
+		ArrayList<Integer> foodCodes = inventory.getCodesList();
+		ArrayList<String> foodDescriptions = inventory.getDescriptionsList();
 	}
 }
