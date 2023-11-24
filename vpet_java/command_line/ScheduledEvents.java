@@ -56,28 +56,28 @@ public class ScheduledEvents {
     private class HungerReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeHunger(1);
+            pet.modifyHunger(-1);
         }
     }
 
     private class CleanlinessReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeClean(1);
+            pet.modifyClean(-1);
         }
     }
 
     private class ThirstReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeThirst(1);
+            pet.modifyThirst(-1);
         }
     }
 
     private class HappinessReductionTask extends TimerTask {
         @Override
         public void run() {
-            pet.removeHappy(1);
+            pet.modifyHappy(-1);
         }
     }
 }
