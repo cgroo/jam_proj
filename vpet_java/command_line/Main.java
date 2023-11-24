@@ -7,7 +7,7 @@ public class Main {
 	private Pet pet;
 	private User user;
 	private int death;
-	private final EasyTimer easyTimer = new EasyTimer();
+	private Task petTask;
 
 	private void initialise() {
 		Scanner input = new Scanner(System.in);
@@ -29,6 +29,7 @@ public class Main {
 		if (petType.toLowerCase().equals("rat")) {
 			pet = new Rat(petName);
 		}
+		petTask = new Task(pet);
 	}
 
 	/**
@@ -94,35 +95,14 @@ public class Main {
 			}
 
 			if ("1".equals(playInput)) {
-				System.out.println("Let's play fetch!");
-				easyTimer.countdown(3, () -> {
-					System.out.println("Fetch!");
-					easyTimer.wait(10);
-					System.out.println(pet.getName() + " has come back with the ball!");
-					pet.addHappy(4);
-					pet.removeHunger(1);
-					pet.removeThirst(2);
-				});
+				petTask.playFetch();
+
+			} else if ("2".equals(playInput)) {
+				petTask.playTugOfWar();
+
 			}
-			/**
-			 * else if ("2".equals(playInput)) {
-			 * int spaceCount = 0;
-			 * System.out.println("Let's play tug of war");
-			 * easyTimer.countdown(10), () -> {
-			 * System.out.println("Game Over");
-			 * };
-			 * while (true) {
-			 * String tugInput = playListener.nextLine();
-			 * if (tugInput.equals(" ")) {
-			 * spaceCount +=1;
-			 * }
-			 * if (easyTimer.get)
-			 * }
-			 * }
-			 * 
-			 */
+			playListener.close();
 		}
-		playListener.close();
 	}
 
 	private void callClean() {
@@ -247,8 +227,6 @@ public class Main {
 		newProgram.gameRules();
 		newProgram.mainLogic();
 		newProgram.endGame();
-
-		newProgram.easyTimer.shutdown();
 
 	}
 
