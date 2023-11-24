@@ -61,58 +61,38 @@ public class Pet {
 		System.out.println("Generic Method");
 	}
 
-	public void addClean(int amount) {
+	public void modifyClean(int amount) {
 		cleanLevel += amount;
 		if (cleanLevel > 100) {
 			cleanLevel = 100;
-		}
-	}
-
-	public void removeClean(int amount) {
-		cleanLevel -= amount;
-		if (cleanLevel < 0) {
+		} else if (cleanLevel < 0) {
 			cleanLevel = 0;
 		}
 	}
 
-	public void addHunger(int amount) {
+	public void modifyHunger(int amount) {
 		hungerLevel += amount;
 		if (hungerLevel > 100) {
 			hungerLevel = 100;
-		}
-	}
-
-	public void removeHunger(int amount) {
-		hungerLevel -= amount;
-		if (hungerLevel < 0) {
+		} else if (hungerLevel < 0) {
 			hungerLevel = 0;
 		}
 	}
 
-	public void addThirst(int amount) {
+	public void modifyThirst(int amount) {
 		thirstLevel += amount;
 		if (thirstLevel > 100) {
 			thirstLevel = 100;
-		}
-	}
-
-	public void removeThirst(int amount) {
-		thirstLevel -= amount;
-		if (thirstLevel < 0) {
+		} else if (thirstLevel < 0) {
 			thirstLevel = 0;
 		}
 	}
 
-	public void addHappy(int amount) {
-		happinessLevel += amount;
-		if (happinessLevel > 100) {
-			happinessLevel = 100;
-		}
-	}
-
-	public void removeHappy(int amount) {
+	public void modifyHappy(int amount) {
 		happinessLevel -= amount;
 		if (happinessLevel < 0) {
+			happinessLevel = 0;
+		} else if (happinessLevel < 0) {
 			happinessLevel = 0;
 		}
 	}
