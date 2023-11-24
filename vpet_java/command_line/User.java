@@ -16,4 +16,11 @@ public class User {
 	public int getMoney() {
 		return userMoney;
 	}
+
+	public void modifyMoney(int amount) {
+		userMoney += amount;
+		if (userMoney < 0) {
+			userMoney = 0;
+		}
+	}
 }
