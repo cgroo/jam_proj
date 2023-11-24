@@ -95,6 +95,28 @@ public class Task {
         }
     }
 
+    public void shop(String item) {
+        if (item.equals("Food")) {
+            if (user.getMoney() >= 50) {
+                System.out.println("You bought 1 food");
+            } else {
+                System.out.println("Sorry blud, you're broke");
+            }
+        } else if (item.equals("Treats")) {
+            if (user.getMoney() >= 25) {
+                System.out.println("You bought 1 treat");
+            } else {
+                System.out.println("Nah bruv, you're broke");
+            }
+        } else if (item.equals("")) {
+            if (user.getMoney() >= 20) {
+                System.out.println("You bought 1 training treat");
+            } else {
+                System.out.println("Get your bread up fam");
+            }
+        }
+    }
+
     public void work() {
         Scanner tempListener = new Scanner(System.in);
         Random rand = new Random();
@@ -156,5 +178,9 @@ public class Task {
             }
         }
         tempListener.close();
+    }
+
+    public void feed(int foodCode) {
+
     }
 }
