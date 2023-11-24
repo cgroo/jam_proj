@@ -80,8 +80,8 @@ public class Main {
 			} else if ("3".equals(playInput)) {
 				petTask.playPeekaboo();
 			}
-			playListener.close();
 		}
+		playListener.close();
 	}
 
 	private void callClean() {
@@ -94,6 +94,15 @@ public class Main {
 			String cleanInput = cleanListener.nextLine();
 			if (cleanInput == "0") {
 				break;
+			}
+			if ("1".equals(cleanInput)) {
+				petTask.clean("Full");
+			} else if ("2".equals(cleanInput)) {
+				petTask.clean("Brush");
+			} else if ("3".equals(cleanInput)) {
+				petTask.clean("Partial");
+			} else if ("4".equals(cleanInput)) {
+				petTask.clean("D&W");
 			}
 		}
 		cleanListener.close();

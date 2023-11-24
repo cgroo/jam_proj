@@ -72,4 +72,24 @@ public class Task {
         }
         pet.modifyHunger((-1 * counter));
     }
+
+    public void clean(String type) {
+        if (type == "Full") {
+            easyTimer.countdown(900, () -> {
+                System.out.println("All clean!");
+            });
+        } else if (type == "Brush") {
+            easyTimer.countdown(600, () -> {
+                System.out.println("All brushed down!");
+            });
+        } else if (type == "Partial") {
+            easyTimer.countdown(300, () -> {
+                System.out.println("Good enough!");
+            });
+        } else if (type == "D&W") {
+            easyTimer.countdown(60, () -> {
+                System.out.println("Smelling good!");
+            });
+        }
+    }
 }
