@@ -8,7 +8,7 @@ public class Main {
 	private String reason;
 	private Task petTask;
 
-	private void initialise(Scanner listener) {
+	private boolean initialise(Scanner listener) {
 		System.out.println("What is your name?");
 		String name = listener.nextLine();
 		System.out.println("What pet do you want? (Type Dog, Rat, or Cat)");
@@ -19,14 +19,20 @@ public class Main {
 		user = new User(name);
 		if (petType.toLowerCase().equals("dog")) {
 			pet = new Dog(petName);
-		}
-		if (petType.toLowerCase().equals("cat")) {
+			petTask = new Task(pet, user);
+			return true;
+		} else if (petType.toLowerCase().equals("cat")) {
 			pet = new Cat(petName);
-		}
-		if (petType.toLowerCase().equals("rat")) {
+			petTask = new Task(pet, user);
+			return true;
+		} else if (petType.toLowerCase().equals("rat")) {
 			pet = new Rat(petName);
+			petTask = new Task(pet, user);
+			return true;
 		}
-		petTask = new Task(pet, user);
+		System.out.println("Incorrect input for pet type");
+		return false;
+
 	}
 
 	private void gameRules() {
@@ -67,6 +73,7 @@ public class Main {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
 			int playInput = playListener.nextInt();
+			playListener.nextLine();
 			if (playInput == 0) {
 				break;
 			} else if (playInput == 1) {
@@ -88,6 +95,8 @@ public class Main {
 			System.out.println(
 					"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe(1 min), '0' to go back home.)");
 			int cleanInput = cleanListener.nextInt();
+			cleanListener.nextLine();
+
 			if (cleanInput == 0) {
 				break;
 			} else if (cleanInput == 1) {
@@ -109,6 +118,7 @@ public class Main {
 			System.out.println(
 					"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats($20), '0' to go back home");
 			int shopInput = shopListener.nextInt();
+			shopListener.nextLine();
 			if (shopInput == 0) {
 				break;
 			} else if (user.getMoney() > 0) {
@@ -128,6 +138,7 @@ public class Main {
 		while (true) {
 			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
 			int workInput = workListener.nextInt();
+			workListener.nextLine();
 			if (workInput == 0) {
 				break;
 			} else if (workInput == 1) {
@@ -141,6 +152,7 @@ public class Main {
 			System.out.println("Please enter the food code or '0' to go back");
 			user.displayFoodInventory();
 			int foodInput = foodListener.nextInt();
+			foodListener.nextLine();
 			if (foodInput == 0) {
 				break;
 			} else {
@@ -187,6 +199,8 @@ public class Main {
 	private void mainLogic(Scanner listener) {
 		System.out.println(pet);
 		while (true) {
+			System.out.println("Welcome to the main menu");
+			System.out.println("what would you like to do?");
 			String input = listener.nextLine();
 			if ("trick".equals(input.toLowerCase())) {
 				callTrick();
@@ -206,6 +220,7 @@ public class Main {
 				callAttributes();
 			} else {
 				System.out.println("Command not recognized, please try again.");
+				listener.nextLine();
 			}
 			boolean check = checkPetDeath();
 			if (check) {
@@ -217,9 +232,13 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		boolean correctInput = false;
 		Scanner universalScanner = new Scanner(System.in);
 		Main newProgram = new Main();
-		newProgram.initialise(universalScanner);
+		do {
+			System.out.println("Please fill out the following fields");
+			correctInput = newProgram.initialise(universalScanner);
+		} while (!correctInput);
 		ScheduledEvents petAttributeDecay = new ScheduledEvents(newProgram.pet);
 		// newProgram.petTesting();
 		newProgram.gameRules();
