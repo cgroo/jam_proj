@@ -48,7 +48,11 @@ public class Main {
 		System.out.println("If at any point you need a reminder of the keywords type 'Help");
 		System.out.println("We hope you enjoy the game and remember");
 		System.out.println("Don't let your pet die" + '\n');
-		System.out.println("Keywords: 'Tricks', 'Play', 'Clean', 'Shop', 'Work', 'Water'");
+		System.out.println("Keywords: 'Tricks', 'Play', 'Clean', 'Shop', 'Work', 'Water', 'Stats");
+	}
+
+	private void callAttributes() {
+		System.out.println(pet);
 	}
 
 	private void callTrick() {
@@ -169,7 +173,7 @@ public class Main {
 			reason = "drinking dirty ass drain water cause you neglected their thirst";
 			return true;
 		}
-		return true;
+		return false;
 	}
 
 	private void endGame() {
@@ -182,6 +186,7 @@ public class Main {
 	}
 
 	private void mainLogic(Scanner listener) {
+		System.out.println(pet);
 		while (true) {
 			if (listener.hasNextLine()) {
 				String input = listener.nextLine();
@@ -199,6 +204,8 @@ public class Main {
 					callFood(listener);
 				} else if ("water".equals(input.toLowerCase())) {
 					callWater();
+				} else if ("stats".equals(input.toLowerCase())) {
+					callAttributes();
 				} else {
 					System.out.println("Command not recognized, please try again.");
 				}
