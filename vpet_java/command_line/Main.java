@@ -183,30 +183,29 @@ public class Main {
 
 	private void mainLogic(Scanner listener) {
 		while (true) {
-			if (listener.hasNextLine()) {
-				String input = listener.nextLine();
-				if ("trick".equals(input.toLowerCase())) {
-					callTrick();
-				} else if ("play".equals(input.toLowerCase())) {
-					callPlay(listener);
-				} else if ("clean".equals(input.toLowerCase())) {
-					callClean(listener);
-				} else if ("shop".equals(input.toLowerCase())) {
-					callShop(listener);
-				} else if ("work".equals(input.toLowerCase())) {
-					callWork(listener);
-				} else if ("food".equals(input.toLowerCase())) {
-					callFood(listener);
-				} else if ("water".equals(input.toLowerCase())) {
-					callWater();
-				} else {
-					System.out.println("Command not recognized, please try again.");
-				}
-				boolean check = checkPetDeath();
-				if (check) {
-					break;
-				}
+			String input = listener.nextLine();
+			if ("trick".equals(input.toLowerCase())) {
+				callTrick();
+			} else if ("play".equals(input.toLowerCase())) {
+				callPlay(listener);
+			} else if ("clean".equals(input.toLowerCase())) {
+				callClean(listener);
+			} else if ("shop".equals(input.toLowerCase())) {
+				callShop(listener);
+			} else if ("work".equals(input.toLowerCase())) {
+				callWork(listener);
+			} else if ("food".equals(input.toLowerCase())) {
+				callFood(listener);
+			} else if ("water".equals(input.toLowerCase())) {
+				callWater();
+			} else {
+				System.out.println("Command not recognized, please try again.");
 			}
+			boolean check = checkPetDeath();
+			if (check) {
+				break;
+			}
+
 		}
 		listener.close();
 	}
