@@ -8,15 +8,13 @@ public class Main {
 	private String reason;
 	private Task petTask;
 
-	private void initialise() {
-		Scanner input = new Scanner(System.in);
+	private void initialise(Scanner listener) {
 		System.out.println("What is your name?");
-		String name = input.nextLine();
+		String name = listener.nextLine();
 		System.out.println("What pet do you want? (Type Dog, Rat, or Cat)");
-		String petType = input.nextLine();
+		String petType = listener.nextLine();
 		System.out.println("What is the name of your new pet?");
-		String petName = input.nextLine();
-		input.close();
+		String petName = listener.nextLine();
 
 		user = new User(name);
 		if (petType.toLowerCase().equals("dog")) {
@@ -59,9 +57,8 @@ public class Main {
 		trickListener.close();
 	}
 
-	private void callPlay() {
+	private void callPlay(Scanner playListener) {
 		System.out.println("Let's play some games! What would you like to play?" + '\n');
-		Scanner playListener = new Scanner(System.in);
 		while (true) {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
@@ -78,12 +75,10 @@ public class Main {
 				petTask.playPeekaboo();
 			}
 		}
-		playListener.close();
 	}
 
-	private void callClean() {
+	private void callClean(Scanner cleanListener) {
 		System.out.println("Its time to clean up! How would you like to clean your pet?" + '\n');
-		Scanner cleanListener = new Scanner(System.in);
 		while (true) {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println(
@@ -101,12 +96,10 @@ public class Main {
 				petTask.clean("D&W");
 			}
 		}
-		cleanListener.close();
 	}
 
-	private void callShop() {
+	private void callShop(Scanner shopListener) {
 		System.out.println("Let's go shopping. What would you like to buy?" + '\n');
-		Scanner shopListener = new Scanner(System.in);
 		while (true) {
 			System.out.println("Type 'INFO' for more information on the options");
 			System.out.println(
@@ -124,11 +117,9 @@ public class Main {
 				petTask.shop("Training");
 			}
 		}
-		shopListener.close();
 	}
 
-	private void callWork() {
-		Scanner workListener = new Scanner(System.in);
+	private void callWork(Scanner workListener) {
 		System.out.println("Time to earn so bread." + '\n');
 		while (true) {
 			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
@@ -140,11 +131,9 @@ public class Main {
 				petTask.work();
 			}
 		}
-		workListener.close();
 	}
 
-	private void callFood() {
-		Scanner foodListener = new Scanner(System.in);
+	private void callFood(Scanner foodListener) {
 		while (true) {
 			System.out.println("Please enter the food code or '0' to go back");
 			user.displayFoodInventory();
@@ -155,7 +144,6 @@ public class Main {
 				petTask.feed(foodInput);
 			}
 		}
-		foodListener.close();
 	}
 
 	private void callWater() {
@@ -193,43 +181,44 @@ public class Main {
 		petTask = null;
 	}
 
-	private void mainLogic() {
-		Scanner listen = new Scanner(System.in);
+	private void mainLogic(Scanner listener) {
 		while (true) {
-			String input = listen.nextLine();
-			if ("trick".equals(input.toLowerCase())) {
-				callTrick();
-			} else if ("play".equals(input.toLowerCase())) {
-				callPlay();
-			} else if ("clean".equals(input.toLowerCase())) {
-				callClean();
-			} else if ("shop".equals(input.toLowerCase())) {
-				callShop();
-			} else if ("work".equals(input.toLowerCase())) {
-				callWork();
-			} else if ("food".equals(input.toLowerCase())) {
-				callFood();
-			} else if ("water".equals(input.toLowerCase())) {
-				callWater();
-			} else {
-				System.out.println("Command not recognised, please try again.");
-			}
-			boolean check = checkPetDeath();
-			if (check) {
-				break;
+			if (listener.hasNextLine()) {
+				String input = listener.nextLine();
+				if ("trick".equals(input.toLowerCase())) {
+					callTrick();
+				} else if ("play".equals(input.toLowerCase())) {
+					callPlay(listener);
+				} else if ("clean".equals(input.toLowerCase())) {
+					callClean(listener);
+				} else if ("shop".equals(input.toLowerCase())) {
+					callShop(listener);
+				} else if ("work".equals(input.toLowerCase())) {
+					callWork(listener);
+				} else if ("food".equals(input.toLowerCase())) {
+					callFood(listener);
+				} else if ("water".equals(input.toLowerCase())) {
+					callWater();
+				} else {
+					System.out.println("Command not recognized, please try again.");
+				}
+				boolean check = checkPetDeath();
+				if (check) {
+					break;
+				}
 			}
 		}
-		listen.close();
-
+		listener.close();
 	}
 
 	public static void main(String[] args) {
+		Scanner universalScanner = new Scanner(System.in);
 		Main newProgram = new Main();
-		newProgram.initialise();
+		newProgram.initialise(universalScanner);
 		ScheduledEvents petAttributeDecay = new ScheduledEvents(newProgram.pet);
 		// newProgram.petTesting();
 		newProgram.gameRules();
-		newProgram.mainLogic();
+		newProgram.mainLogic(universalScanner);
 		newProgram.endGame();
 		petAttributeDecay.endTimers();
 	}
