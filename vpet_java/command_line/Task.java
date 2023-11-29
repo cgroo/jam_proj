@@ -1,7 +1,6 @@
 package command_line;
 
 import java.util.Scanner;
-import java.lang.Math;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -27,28 +26,22 @@ public class Task {
             pet.modifyThirst(-2);
             pet.modifyClean(-5);
             System.out.println("That was a good game of fetch, " + pet.getName() + " has gained 3 happiness points");
-        });
+        }, true);
     }
 
     public void playTugOfWar(Scanner tempListener) {
-        double spaceCount = 0;
         System.out.println("Let's play tug of war");
-        easyTimer.countdown(10, () -> {
-            System.out.println("Game Over");
-        });
-        while (true) {
-            String tugInput = tempListener.nextLine();
-            if (tugInput.equals(" ")) {
-                spaceCount += 1;
-            }
-            if (easyTimer.getRemainingTime() == 0) {
-                break;
-            }
-        }
-        double amount = Math.floor((spaceCount / 10));
-        pet.modifyHappy((int) amount);
+        Random rand = new Random();
+        int rand_int = rand.nextInt(10);
+        easyTimer.countdown(rand_int, null, false);
+        System.out.println("Game Over");
+        pet.modifyHappy((10 - rand_int));
+        pet.modifyThirst(-2);
+        pet.modifyHunger(-2);
+        pet.modifyClean(-3);
         System.out.println(
-                "That was a good game, " + pet.getName() + " has gained " + (int) amount + " happiness points");
+                "It took you " + rand_int + " seconds to win. " + pet.getName() + " has gained " + (10 - rand_int)
+                        + " points");
     }
 
     public void playPeekaboo() {
@@ -72,7 +65,7 @@ public class Task {
                     System.out.println("Time's up! You missed it.");
                     failed.set(true);
                 });
-            });
+            }, false);
             threshold /= 2;
             counter += 1;
         }
@@ -84,21 +77,21 @@ public class Task {
             easyTimer.countdown(900, () -> {
                 System.out.println("All clean!" + pet.getName() + " has earned 90 clean points");
                 pet.modifyClean(90);
-            });
+            }, false);
         } else if (type == "Brush") {
             easyTimer.countdown(600, () -> {
                 System.out.println("All brushed down!" + pet.getName() + " has earned 40 clean points");
                 pet.modifyClean(40);
-            });
+            }, false);
         } else if (type == "Partial") {
             easyTimer.countdown(300, () -> {
                 System.out.println("Good enough!" + pet.getName() + " has earned 25 clean points");
                 pet.modifyClean(25);
-            });
+            }, false);
         } else if (type == "D&W") {
             easyTimer.countdown(60, () -> {
                 System.out.println("Smelling good!" + pet.getName() + " has earned 4 clean points");
-            });
+            }, false);
             pet.modifyClean(4);
         }
     }

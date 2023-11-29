@@ -10,12 +10,14 @@ public class EasyTimer {
     private long startTime;
     private long duration;
 
-    public void countdown(int seconds, Runnable actionOnCompletion) {
+    public void countdown(int seconds, Runnable actionOnCompletion, boolean showTime) {
         this.startTime = System.currentTimeMillis();
         this.duration = seconds * 1000L;
         executorService.schedule(() -> {
             for (int i = seconds; i > 0; i--) {
-                System.out.println(i);
+                if (showTime) {
+                    System.out.println(i);
+                }
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
