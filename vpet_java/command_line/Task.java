@@ -25,6 +25,8 @@ public class Task {
             pet.modifyHappy(3);
             pet.modifyHunger(-1);
             pet.modifyThirst(-2);
+            pet.modifyClean(-5);
+            System.out.println("That was a good game of fetch, " + pet.getName() + " has gained 3 happiness points");
         });
     }
 
@@ -45,6 +47,8 @@ public class Task {
         }
         double amount = Math.floor((spaceCount / 10));
         pet.modifyHappy((int) amount);
+        System.out.println(
+                "That was a good game, " + pet.getName() + " has gained " + (int) amount + " happiness points");
     }
 
     public void playPeekaboo() {
@@ -62,6 +66,8 @@ public class Task {
                 easyTimer.waitForInput(tempThresh, () -> {
                     System.out.println(" Pet: You got me!");
                     pet.modifyHappy((int) (2 / tempThresh));
+                    System.out.println("That was a good game, " + pet.getName() + " has gained "
+                            + (int) (2 / tempThresh) + " happiness points");
                 }, () -> {
                     System.out.println("Time's up! You missed it.");
                     failed.set(true);
@@ -76,20 +82,24 @@ public class Task {
     public void clean(String type) {
         if (type == "Full") {
             easyTimer.countdown(900, () -> {
-                System.out.println("All clean!");
+                System.out.println("All clean!" + pet.getName() + " has earned 90 clean points");
+                pet.modifyClean(90);
             });
         } else if (type == "Brush") {
             easyTimer.countdown(600, () -> {
-                System.out.println("All brushed down!");
+                System.out.println("All brushed down!" + pet.getName() + " has earned 40 clean points");
+                pet.modifyClean(40);
             });
         } else if (type == "Partial") {
             easyTimer.countdown(300, () -> {
-                System.out.println("Good enough!");
+                System.out.println("Good enough!" + pet.getName() + " has earned 25 clean points");
+                pet.modifyClean(25);
             });
         } else if (type == "D&W") {
             easyTimer.countdown(60, () -> {
-                System.out.println("Smelling good!");
+                System.out.println("Smelling good!" + pet.getName() + " has earned 4 clean points");
             });
+            pet.modifyClean(4);
         }
     }
 
