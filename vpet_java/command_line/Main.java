@@ -73,7 +73,7 @@ public class Main {
 				petTask.playFetch();
 
 			} else if (playInput == 2) {
-				petTask.playTugOfWar();
+				petTask.playTugOfWar(playListener);
 
 			} else if (playInput == 3) {
 				petTask.playPeekaboo();
@@ -128,11 +128,10 @@ public class Main {
 		while (true) {
 			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
 			int workInput = workListener.nextInt();
-
 			if (workInput == 0) {
 				break;
 			} else if (workInput == 1) {
-				petTask.work();
+				petTask.work(workListener);
 			}
 		}
 	}
@@ -145,7 +144,7 @@ public class Main {
 			if (foodInput == 0) {
 				break;
 			} else {
-				petTask.feed(foodInput);
+				petTask.feed(foodInput, foodListener);
 			}
 		}
 	}
