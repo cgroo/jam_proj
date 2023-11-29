@@ -26,6 +26,7 @@ public class Task {
             pet.modifyThirst(-2);
             pet.modifyClean(-5);
             System.out.println("That was a good game of fetch, " + pet.getName() + " has gained 3 happiness points");
+            System.out.println("What would you like to do now?");
         }, true);
     }
 
@@ -42,6 +43,7 @@ public class Task {
         System.out.println(
                 "It took you " + rand_int + " seconds to win. " + pet.getName() + " has gained " + (10 - rand_int)
                         + " points");
+        System.out.println("What would you like to do now?");
     }
 
     public void playPeekaboo() {
@@ -94,6 +96,7 @@ public class Task {
             }, false);
             pet.modifyClean(4);
         }
+        System.out.println("What would you like to do now?");
     }
 
     public void shop(String item) {
@@ -116,6 +119,7 @@ public class Task {
                 System.out.println("Get your bread up fam");
             }
         }
+        System.out.println("What would you like to do now?");
     }
 
     public void work(Scanner tempListener) {
@@ -177,6 +181,7 @@ public class Task {
                 System.out.println("Incorrect.");
             }
         }
+        System.out.println("What would you like to do now?");
     }
 
     public void feed(int foodCode, Scanner tempListener) {
@@ -195,5 +200,6 @@ public class Task {
         } else {
             System.out.println("That is not a valid food code");
         }
+        System.out.println("What would you like to do now?");
     }
 }

@@ -78,15 +78,12 @@ public class Main {
 				break;
 			} else if (playInput == 1) {
 				petTask.playFetch();
-				System.out.println("What would you like to do now?");
 
 			} else if (playInput == 2) {
 				petTask.playTugOfWar(playListener);
-				System.out.println("What would you like to do now?");
 
 			} else if (playInput == 3) {
 				petTask.playPeekaboo();
-				System.out.println("What would you like to do now?");
 			}
 		}
 	}
@@ -104,16 +101,12 @@ public class Main {
 				break;
 			} else if (cleanInput == 1) {
 				petTask.clean("Full");
-				System.out.println("What would you like to do now?");
 			} else if (cleanInput == 2) {
 				petTask.clean("Brush");
-				System.out.println("What would you like to do now?");
 			} else if (cleanInput == 3) {
 				petTask.clean("Partial");
-				System.out.println("What would you like to do now?");
 			} else if (cleanInput == 4) {
 				petTask.clean("D&W");
-				System.out.println("What would you like to do now?");
 			}
 		}
 	}
@@ -130,16 +123,12 @@ public class Main {
 				break;
 			} else if (user.getMoney() > 0) {
 				System.out.println("Nah bro, you're broke");
-				System.out.println("What would you like to do now?");
 			} else if (shopInput == 1) {
 				petTask.shop("Food");
-				System.out.println("What would you like to do now?");
 			} else if (shopInput == 2) {
 				petTask.shop("Treats");
-				System.out.println("What would you like to do now?");
 			} else if (shopInput == 3) {
 				petTask.shop("Training");
-				System.out.println("What would you like to do now?");
 			}
 		}
 	}
@@ -154,7 +143,6 @@ public class Main {
 				break;
 			} else if (workInput == 1) {
 				petTask.work(workListener);
-				System.out.println("What would you like to do now?");
 			}
 		}
 	}
@@ -169,7 +157,6 @@ public class Main {
 				break;
 			} else {
 				petTask.feed(foodInput, foodListener);
-				System.out.println("What would you like to do now?");
 			}
 		}
 	}
