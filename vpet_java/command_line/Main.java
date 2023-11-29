@@ -48,7 +48,11 @@ public class Main {
 		System.out.println("If at any point you need a reminder of the keywords type 'Help");
 		System.out.println("We hope you enjoy the game and remember");
 		System.out.println("Don't let your pet die" + '\n');
-		System.out.println("Keywords: 'Tricks', 'Play', 'Clean', 'Shop', 'Work', 'Water'");
+		System.out.println("Keywords: 'Tricks', 'Play', 'Clean', 'Shop', 'Work', 'Water', 'Stats");
+	}
+
+	private void callAttributes() {
+		System.out.println(pet);
 	}
 
 	private void callTrick() {
@@ -69,7 +73,7 @@ public class Main {
 				petTask.playFetch();
 
 			} else if (playInput == 2) {
-				petTask.playTugOfWar();
+				petTask.playTugOfWar(playListener);
 
 			} else if (playInput == 3) {
 				petTask.playPeekaboo();
@@ -124,11 +128,10 @@ public class Main {
 		while (true) {
 			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
 			int workInput = workListener.nextInt();
-
 			if (workInput == 0) {
 				break;
 			} else if (workInput == 1) {
-				petTask.work();
+				petTask.work(workListener);
 			}
 		}
 	}
@@ -141,7 +144,7 @@ public class Main {
 			if (foodInput == 0) {
 				break;
 			} else {
-				petTask.feed(foodInput);
+				petTask.feed(foodInput, foodListener);
 			}
 		}
 	}
@@ -169,7 +172,7 @@ public class Main {
 			reason = "drinking dirty ass drain water cause you neglected their thirst";
 			return true;
 		}
-		return true;
+		return false;
 	}
 
 	private void endGame() {
@@ -182,6 +185,7 @@ public class Main {
 	}
 
 	private void mainLogic(Scanner listener) {
+		System.out.println(pet);
 		while (true) {
 			String input = listener.nextLine();
 			if ("trick".equals(input.toLowerCase())) {
@@ -198,6 +202,8 @@ public class Main {
 				callFood(listener);
 			} else if ("water".equals(input.toLowerCase())) {
 				callWater();
+			} else if ("stats".equals(input.toLowerCase())) {
+				callAttributes();
 			} else {
 				System.out.println("Command not recognized, please try again.");
 			}

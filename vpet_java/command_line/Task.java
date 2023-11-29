@@ -22,14 +22,13 @@ public class Task {
             System.out.println("Fetch!");
             easyTimer.wait(10);
             System.out.println(pet.getName() + " has come back with the ball!");
-            pet.modifyHappy(4);
+            pet.modifyHappy(3);
             pet.modifyHunger(-1);
             pet.modifyThirst(-2);
         });
     }
 
-    public void playTugOfWar() {
-        Scanner tempListener = new Scanner(System.in);
+    public void playTugOfWar(Scanner tempListener) {
         double spaceCount = 0;
         System.out.println("Let's play tug of war");
         easyTimer.countdown(10, () -> {
@@ -46,7 +45,6 @@ public class Task {
         }
         double amount = Math.floor((spaceCount / 10));
         pet.modifyHappy((int) amount);
-        tempListener.close();
     }
 
     public void playPeekaboo() {
@@ -117,8 +115,7 @@ public class Task {
         }
     }
 
-    public void work() {
-        Scanner tempListener = new Scanner(System.in);
+    public void work(Scanner tempListener) {
         Random rand = new Random();
         int rand_int = rand.nextInt(2);
         if (rand_int == 0) {
@@ -177,11 +174,9 @@ public class Task {
                 System.out.println("Incorrect.");
             }
         }
-        tempListener.close();
     }
 
-    public void feed(int foodCode) {
-        Scanner tempListener = new Scanner(System.in);
+    public void feed(int foodCode, Scanner tempListener) {
         if (user.getFoodInventory().getCodesList().contains(foodCode)) {
             int index = user.getFoodInventory().getCodesList().indexOf(foodCode);
             System.out.println("\n" + user.getFoodInventory().getNamesList().get(index));
@@ -197,6 +192,5 @@ public class Task {
         } else {
             System.out.println("That is not a valid food code");
         }
-        tempListener.close();
     }
 }
