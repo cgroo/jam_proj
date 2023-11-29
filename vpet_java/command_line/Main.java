@@ -69,31 +69,34 @@ public class Main {
 
 	private void callPlay(Scanner playListener) {
 		System.out.println("Let's play some games! What would you like to play?" + '\n');
+		System.out.println("Type 'INFO' for more information on the options");
+		System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
 		while (true) {
-			System.out.println("Type 'INFO' for more information on the options");
-			System.out.println("(Type: '1' for Fetch, '2' for Tug of War, '3' for Peekaboo, '0' to go back home.)");
 			int playInput = playListener.nextInt();
 			playListener.nextLine();
 			if (playInput == 0) {
 				break;
 			} else if (playInput == 1) {
 				petTask.playFetch();
+				System.out.println("What would you like to do now?");
 
 			} else if (playInput == 2) {
 				petTask.playTugOfWar(playListener);
+				System.out.println("What would you like to do now?");
 
 			} else if (playInput == 3) {
 				petTask.playPeekaboo();
+				System.out.println("What would you like to do now?");
 			}
 		}
 	}
 
 	private void callClean(Scanner cleanListener) {
 		System.out.println("Its time to clean up! How would you like to clean your pet?" + '\n');
+		System.out.println("Type 'INFO' for more information on the options");
+		System.out.println(
+				"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe(1 min), '0' to go back home.)");
 		while (true) {
-			System.out.println("Type 'INFO' for more information on the options");
-			System.out.println(
-					"(Type: '1' for Full clean (15 min), '2' for Brush down (10 min), '3' for Partial clean (5) min, '4' for Deoderiser and Wipe(1 min), '0' to go back home.)");
 			int cleanInput = cleanListener.nextInt();
 			cleanListener.nextLine();
 
@@ -101,55 +104,64 @@ public class Main {
 				break;
 			} else if (cleanInput == 1) {
 				petTask.clean("Full");
+				System.out.println("What would you like to do now?");
 			} else if (cleanInput == 2) {
 				petTask.clean("Brush");
+				System.out.println("What would you like to do now?");
 			} else if (cleanInput == 3) {
 				petTask.clean("Partial");
+				System.out.println("What would you like to do now?");
 			} else if (cleanInput == 4) {
 				petTask.clean("D&W");
+				System.out.println("What would you like to do now?");
 			}
 		}
 	}
 
 	private void callShop(Scanner shopListener) {
 		System.out.println("Let's go shopping. What would you like to buy?" + '\n');
+		System.out.println("Type 'INFO' for more information on the options");
+		System.out.println(
+				"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats($20), '0' to go back home");
 		while (true) {
-			System.out.println("Type 'INFO' for more information on the options");
-			System.out.println(
-					"(Type '1' for Pet food ($50), Type '2' for Pet treats ($25), Type '3' for Training treats($20), '0' to go back home");
 			int shopInput = shopListener.nextInt();
 			shopListener.nextLine();
 			if (shopInput == 0) {
 				break;
 			} else if (user.getMoney() > 0) {
 				System.out.println("Nah bro, you're broke");
+				System.out.println("What would you like to do now?");
 			} else if (shopInput == 1) {
 				petTask.shop("Food");
+				System.out.println("What would you like to do now?");
 			} else if (shopInput == 2) {
 				petTask.shop("Treats");
+				System.out.println("What would you like to do now?");
 			} else if (shopInput == 3) {
 				petTask.shop("Training");
+				System.out.println("What would you like to do now?");
 			}
 		}
 	}
 
 	private void callWork(Scanner workListener) {
 		System.out.println("Time to earn so bread." + '\n');
+		System.out.println("To work press type '1'. If at any point you want to go home type '0'");
 		while (true) {
-			System.out.println("To work press type '1'. If at any point you want to go home type '0'");
 			int workInput = workListener.nextInt();
 			workListener.nextLine();
 			if (workInput == 0) {
 				break;
 			} else if (workInput == 1) {
 				petTask.work(workListener);
+				System.out.println("What would you like to do now?");
 			}
 		}
 	}
 
 	private void callFood(Scanner foodListener) {
+		System.out.println("Please enter the food code or '0' to go back");
 		while (true) {
-			System.out.println("Please enter the food code or '0' to go back");
 			user.displayFoodInventory();
 			int foodInput = foodListener.nextInt();
 			foodListener.nextLine();
@@ -157,6 +169,7 @@ public class Main {
 				break;
 			} else {
 				petTask.feed(foodInput, foodListener);
+				System.out.println("What would you like to do now?");
 			}
 		}
 	}
