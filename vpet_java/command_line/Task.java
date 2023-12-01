@@ -3,6 +3,7 @@ package command_line;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.lang.Math;
 
 public class Task {
     private Pet pet;
@@ -32,16 +33,24 @@ public class Task {
 
     public void playTugOfWar(Scanner tempListener) {
         System.out.println("Let's play tug of war");
-        Random rand = new Random();
-        int rand_int = rand.nextInt(10);
-        easyTimer.countdown(rand_int, null, false);
+        long startTime = System.currentTimeMillis();
+        long endTime = startTime + 10000;
+        int spaceCount = 0;
+        tempListener.nextLine();
+        while (System.currentTimeMillis() < endTime) {
+            System.out.println(spaceCount);
+            String userInput = tempListener.nextLine();
+            if (userInput.equals(" ")) {
+                spaceCount++;
+            }
+        }
         System.out.println("Game Over");
-        pet.modifyHappy((10 - rand_int));
+        pet.modifyHappy((Math.floorDiv(spaceCount, 10)));
         pet.modifyThirst(-2);
         pet.modifyHunger(-2);
         pet.modifyClean(-3);
         System.out.println(
-                "It took you " + rand_int + " seconds to win. " + pet.getName() + " has gained " + (10 - rand_int)
+                pet.getName() + " has gained " + (Math.floorDiv(spaceCount, 10))
                         + " points");
         System.out.println("What would you like to do now?");
     }
